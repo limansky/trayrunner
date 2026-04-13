@@ -24,6 +24,8 @@ public:
 private slots:
     void on_commandBtn_clicked();
 
+    void on_checkCmdBtn_clicked();
+
 private:
     Ui::SettingsDialog *ui;
 };

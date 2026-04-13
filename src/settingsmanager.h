@@ -4,9 +4,16 @@
 #include <QString>
 #include <QSettings>
 
+enum CheckMethod {
+    Command,
+    Http
+};
+
 struct Settings {
-    QString toRun;
-    QString toCheck;
+    QString runCommand;
+    CheckMethod checkMethod;
+    QString checkCommand;
+    QString checkUrl;
     int interval;
 };
 

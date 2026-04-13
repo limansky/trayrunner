@@ -39,6 +39,8 @@ void TrayIcon::showSettings()
     SettingsDialog dlg(SettingsManager::instance().getSettings());
 
     if (dlg.exec() == QDialog::Accepted) {
+        SettingsManager::instance().save(dlg.getSettings());
+        updateActions();
         trayIcon->showMessage("Hello", "Gonna do something");
     }
 }
@@ -51,8 +53,9 @@ void TrayIcon::quit()
 void TrayIcon::updateActions() {
     auto settings = SettingsManager::instance().getSettings();
 
-    bool canRun = !settings.toRun.isEmpty();
-    bool canCheck = !settings.toCheck.isEmpty(); // TODO: && isRunning
+    bool canRun = !settings.runCommand.isEmpty();
+    bool canCheck = (settings.checkMethod == CheckMethod::Command && !settings.checkCommand.isEmpty()) ||
+        (settings.checkMethod == CheckMethod::Http && !settings.checkUrl.isEmpty()); // TODO: && isRunning
 
     runAction->setEnabled(canRun);
     stopAction->setEnabled(canRun);
