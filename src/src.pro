@@ -9,17 +9,22 @@ TARGET = trayrunner
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    logview.cpp \
     main.cpp \
     settingsdialog.cpp \
     settingsmanager.cpp \
-    trayicon.cpp
+    trayicon.cpp \
+    watchdog.cpp
 
 HEADERS += \
+    logview.h \
     settingsdialog.h \
     settingsmanager.h \
-    trayicon.h
+    trayicon.h \
+    watchdog.h
 
 FORMS += \
+    logview.ui \
     settingsdialog.ui
 
 # Default rules for deployment.

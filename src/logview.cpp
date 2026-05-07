@@ -1,0 +1,15 @@
+#include "logview.h"
+#include "ui_logview.h"
+
+LogView::LogView(QString logs, QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::LogView)
+{
+    ui->setupUi(this);
+    ui->logTextBox->setPlainText(logs);
+}
+
+LogView::~LogView()
+{
+    delete ui;
+}

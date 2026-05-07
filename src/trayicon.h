@@ -6,6 +6,7 @@
 class QSystemTrayIcon;
 class QMenu;
 class QAction;
+class Watchdog;
 
 class TrayIcon : public QObject
 {
@@ -23,12 +24,16 @@ private:
     QAction* stopAction;
     QAction* checkAction;
     QAction* logAction;
+    Watchdog* watchdog;
 
 signals:
 
 public slots:
     void showSettings();
     void quit();
+    void start();
+    void stop();
+    void showLogs();
 };
 
 #endif // TRAYICON_H
